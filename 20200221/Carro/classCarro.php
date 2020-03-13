@@ -29,15 +29,23 @@ class Carro{
 
 
     //lista de metodos
-    public function acelerar ($valor_aceleracao){
-        $this->velocidade_atual = 0;
+    public function acelerar($valor_aceleracao){
+        $this->velocidade_atual = 
         $this->velocidade_atual + $valor_aceleracao*$tempo; 
+
+        if($this->velocidade_atual > $this->velocidade_maxima){
+            $this->velocidade_atual = $this->velocidade_maxima;
+        }
 
     }
 
     private function frear($valor_frenagem, $tempo){
-        $this->velocidade_atual =
+        $this->velocidade_atual = 
         $this->velocidade_atual - $valor_frenagem*$tempo;
+
+        if($this->velocidade_atual < 0){
+            $this->velocidade_atual = 0;
+        }
 
     }
 
